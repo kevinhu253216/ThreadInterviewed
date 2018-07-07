@@ -2,12 +2,12 @@
 public class TT implements Runnable{
     int b = 100;
 
-    public synchronized void m1() throws Exception{
+    public synchronized void m1() throws Exception{//该的时候可以加锁
         b = 1000;
         Thread.sleep(5000);//睡眠可以切换到m2
         System.out.println("(m1): b = " + b);
     }
-    public synchronized void m2() throws Exception{ //output=>   (m1): b = 1000
+    public synchronized void m2() throws Exception{ //output=>   (m1): b = 1000  //读的时候不用加锁
   // public  void m2() throws Exception{  //output=>   (m1):b = 2000 虽然m1被锁定，但是变量b仍然可以访问
                                           //必须m2也可以加锁
         Thread.sleep(2000);
